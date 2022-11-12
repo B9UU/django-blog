@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.usersprofile.image.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{user.username}}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    </div>
+  </div>
+  <!-- FORM HERE -->
+</div>
+<div class="content-section">
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Join Today</legend>
+          {{ p_form|crispy }}
+          {{ pwd_form|crispy }}
+      </fieldset>
+      <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Save</button>
+      </div>
+  </form>
+
+</div>
+<!-- {% for post in data %}
+<article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="me-2 text-decoration-none" href="#">{{ post.author }}</a>
+        <small class="text-muted">{{ post.data_posted }}</small>
+      </div>
+      <h2><a class="article-title text-decoration-none" href="#">{{ post.title }}</a></h2>
+      <p class="article-content">{{ post.content }}</p>
+    </div>
+  </article>
+  
+ 
+
+{% endfor %} -->
+{% endblock %}
