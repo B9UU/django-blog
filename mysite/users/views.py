@@ -20,6 +20,8 @@ def register(request):
             return redirect('blog-home')
         else:
             messages.error(request, f"Something was wrong")
+    elif request.user.is_authenticated:
+        return redirect('profile-page')
     else:
         form = UsersRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
