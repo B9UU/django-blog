@@ -7,7 +7,7 @@
       
       <div class="article-metadata container">
         <img class='rounded-circle article-img'src="{{ post.author.usersprofile.image.url }}" >
-        <a class="me-2 text-decoration-none" href="#">{{ post.author }}</a>
+        <a class="me-2 text-decoration-none" href="{% url 'profile_blogs' username=post.author.username %}">{{ post.author }}</a>
         <small class="text-muted">{{ post.data_posted }}</small>
         {% if post.author == user %}
         
